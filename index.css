@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header {
+    text-align: center;
+    padding-block: 1.5rem;
+    border-bottom: 2px solid black;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 3;
+}
+
+.scoreboard-container {
+    max-width: 400px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 90%;
+    row-gap: 1rem;
+    column-gap: .2rem;
+}
+
+@keyframes flash {
+    5% {
+        border-color: crimson;
+    }
+
+    50% {
+        border-color: gray;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: spin 900ms infinite linear;
+}
+
+.info-bar {
+    padding-block: 2rem;
+    visibility: hidden;
+}
+
+.spiral {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.invalid {
+    animation: flash 1.5s;
+}
+
+.cell {
+    border: 2px solid gray;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* .invalidPhrase {
+    border: 2px solid red;
+} */
+
+
+@keyframes rainbow {
+    0% {
+        color: rgb(255, 0, 0);
+    }
+
+    14.2% {
+        color: rgb(255, 165, 0);
+    }
+
+    28.4% {
+        color:  rgb(255, 255, 0);
+    }
+
+    42.6% {
+        color: rgb(0, 128, 0);
+    }
+
+    56.8% {
+        color: rgb(0, 0, 255);
+    }
+
+    71% {
+        color: rgb(75, 0, 130);
+    }
+
+    85.2% {
+        color: rgb(238, 130, 238);
+    }
+
+    100% {
+        color: rgb(255, 0, 0);
+    }
+}
+
+.winner {
+    animation: rainbow 3s infinite linear;
+}
+
+.show {
+    visibility: visible;
+}
+
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.close {
+    background-color: orange;
+    color: white;
+}
+
+.wrong {
+    background-color: gray;
+    color: white;
+}
+
+.toast-wrapper {
+    position: absolute;
+    width: 100%;
+    /* top: 2rem; */
+    z-index: 9999;
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.toast-container {
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    padding-block: 1.3rem;
+    /* padding-bottom: 1rem; */
+    padding-inline: .8rem;
+    max-width: 500px;
+    width: 95%;
+    margin-inline: auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-toast {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    /* font-size: 1rem; */
+}
+
+.warning-toast {
+    background-color: crimson;
+}
+
+.info-toast {
+    background-color: orange;
+}
+
+.success-toast {
+    background-color: rgb(16, 164, 16);
+}
+
+.footer-banner {
+    max-width: 400px;
+    width: 90%;
+    margin-inline: auto;
+    margin-block: 1rem;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    padding: .5rem;
+    text-align: center;
+    display: none;
+}
+
+.win-announcement, .loss-annoucement {
+    display: none;
+    font-weight: bold;
+}
+
+#refresh-btn {
+    padding: .5rem;
+    /* padding-block: 1.2rem; */
+    background-color: rgb(138, 43, 226);
+    border-radius: 10px;
+    color: white;
+    /* display: block; */
+    margin-left: .2rem;
+}
+
+#refresh-btn:hover {
+    background-color: rgb(153, 63, 243);
+}
+
+#refresh-btn:active {
+    background-color: rgb(122, 33, 206);
+}
+
+@media screen and (min-width: 350px) {
+    .header {
+        font-size: x-large;
+    }
+
+    .toast-container {
+        font-size: large;
+    }
+
+    .cell {
+        height: 50px;
+        width: 50px;
+        font-size: x-large;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .header {
+        font-size: xx-large;
+    }
+
+    /* .toast-container {
+        font-size: x-large;
+    } */
+
+    .cell {
+        height: 60px;
+        width: 60px;
+        font-size: xx-large;
+    }
+}

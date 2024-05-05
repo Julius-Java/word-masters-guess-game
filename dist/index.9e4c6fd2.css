@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.header {
+  text-align: center;
+  letter-spacing: 3px;
+  border-bottom: 2px solid #000;
+  padding-block: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.scoreboard-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 1rem .2rem;
+  width: 90%;
+  max-width: 400px;
+  margin-inline: auto;
+  display: grid;
+}
+
+@keyframes flash {
+  5% {
+    border-color: #dc143c;
+  }
+
+  50% {
+    border-color: gray;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: .9s linear infinite spin;
+}
+
+.info-bar {
+  visibility: hidden;
+  padding-block: 2rem;
+}
+
+.spiral {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.invalid {
+  animation: 1.5s flash;
+}
+
+.cell {
+  color: #000;
+  text-transform: uppercase;
+  border: 2px solid gray;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+}
+
+@keyframes rainbow {
+  0% {
+    color: red;
+  }
+
+  14.2% {
+    color: orange;
+  }
+
+  28.4% {
+    color: #ff0;
+  }
+
+  42.6% {
+    color: green;
+  }
+
+  56.8% {
+    color: #00f;
+  }
+
+  71% {
+    color: indigo;
+  }
+
+  85.2% {
+    color: violet;
+  }
+
+  100% {
+    color: red;
+  }
+}
+
+.winner {
+  animation: 3s linear infinite rainbow;
+}
+
+.show {
+  visibility: visible;
+}
+
+.correct {
+  color: #fff;
+  background-color: green;
+}
+
+.close {
+  color: #fff;
+  background-color: orange;
+}
+
+.wrong {
+  color: #fff;
+  background-color: gray;
+}
+
+.toast-wrapper {
+  z-index: 9999;
+  width: 100%;
+  display: none;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}
+
+.toast-container {
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+  width: 95%;
+  max-width: 500px;
+  margin-inline: auto;
+  padding-block: 1.3rem;
+  padding-inline: .8rem;
+  font-size: 1rem;
+  position: relative;
+}
+
+.close-toast {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.warning-toast {
+  background-color: #dc143c;
+}
+
+.info-toast {
+  background-color: orange;
+}
+
+.success-toast {
+  background-color: #10a410;
+}
+
+.footer-banner {
+  text-align: center;
+  border: 2px solid #add8e6;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  margin-block: 1rem;
+  margin-inline: auto;
+  padding: .5rem;
+  display: none;
+}
+
+.win-announcement, .loss-annoucement {
+  font-weight: bold;
+  display: none;
+}
+
+#refresh-btn {
+  color: #fff;
+  background-color: #8a2be2;
+  border-radius: 10px;
+  margin-left: .2rem;
+  padding: .5rem;
+}
+
+#refresh-btn:hover {
+  background-color: #993ff3;
+}
+
+#refresh-btn:active {
+  background-color: #7a21ce;
+}
+
+@media screen and (width >= 350px) {
+  .header {
+    font-size: x-large;
+  }
+
+  .toast-container {
+    font-size: large;
+  }
+
+  .cell {
+    width: 50px;
+    height: 50px;
+    font-size: x-large;
+  }
+}
+
+@media screen and (width >= 600px) {
+  .header {
+    font-size: xx-large;
+  }
+
+  .cell {
+    width: 60px;
+    height: 60px;
+    font-size: xx-large;
+  }
+}
+/*# sourceMappingURL=index.9e4c6fd2.css.map */

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/bf72e7398b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/index.css">
+    <title>Word Master</title>
+</head>
+<body>
+    <header class="header">
+        <p class="heading-title">Word Master</p>
+    </header>
+
+    <article class="toast-wrapper">
+        <div class="toast-container">
+            <span class="toast-content">Welcome, the goal is to guess the word of the day!</span>
+            <i class="fa-solid fa-xmark close-toast fa-lg"></i>
+        </div>
+    </article>
+
+    <div class="info-bar rotate show">
+        <div class="spiral">🌀</div>
+      </div>
+
+    <main class="scoreboard-container">
+        <!-- First Row -->
+        <div class="cell" id="letter-0"></div>
+        <div class="cell" id="letter-1"></div>
+        <div class="cell" id="letter-2"></div>
+        <div class="cell" id="letter-3"></div>
+        <div class="cell" id="letter-4"></div>
+
+        <!-- Second Row -->
+        <div class="cell" id="letter-5"></div>
+        <div class="cell" id="letter-6"></div>
+        <div class="cell" id="letter-7"></div>
+        <div class="cell" id="letter-8"></div>
+        <div class="cell" id="letter-9"></div>
+
+        <!-- Third Row -->
+        <div class="cell" id="letter-10"></div>
+        <div class="cell" id="letter-11"></div>
+        <div class="cell" id="letter-12"></div>
+        <div class="cell" id="letter-13"></div>
+        <div class="cell" id="letter-14"></div>
+
+        <div class="cell" id="letter-15"></div>
+        <div class="cell" id="letter-16"></div>
+        <div class="cell" id="letter-17"></div>
+        <div class="cell" id="letter-18"></div>
+        <div class="cell" id="letter-19"></div>
+
+        <div class="cell" id="letter-21"></div>
+        <div class="cell" id="letter-22"></div>
+        <div class="cell" id="letter-23"></div>
+        <div class="cell" id="letter-24"></div>
+        <div class="cell" id="letter-25"></div>
+
+        <div class="cell" id="letter-26"></div>
+        <div class="cell" id="letter-27"></div>
+        <div class="cell" id="letter-28"></div>
+        <div class="cell" id="letter-29"></div>
+        <div class="cell" id="letter-30"></div>
+    </main>
+    <div class="footer-banner">
+        <span class="win-announcement">Awesome! Stop by tomorrow to guess again</span>
+        <span class="loss-announcement" style="font-weight: bold;">Aww sorry, you're out of guesses, the word of the day is</span>
+    </div>
+    <script type="module" src="wordmaster.js"></script>
+</body>
+</html>
