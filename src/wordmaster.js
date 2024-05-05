@@ -1,8 +1,9 @@
-const popMotion = require("popmotion")
+// const popMotion = require("popmotion")
+import {animate} from "popmotion"
 import confetti from 'canvas-confetti';
 require("dotenv").config();
 
-const {animate} = popMotion
+// const {animate} = popmotion
 
 const {log} = console
 
