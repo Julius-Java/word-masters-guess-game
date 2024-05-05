@@ -3,8 +3,6 @@ import {animate} from "popmotion"
 import confetti from 'canvas-confetti';
 require("dotenv").config();
 
-// const {animate} = popmotion
-
 const {log} = console
 
 function isLetter(letter) {
