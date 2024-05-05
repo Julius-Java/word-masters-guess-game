@@ -53,6 +53,8 @@ button {
 .info-bar {
     padding-block: 2rem;
     visibility: hidden;
+    max-width: 200px;
+    margin-inline: auto;
 }
 
 .spiral {
