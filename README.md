@@ -1,4 +1,4 @@
-# Word Guess Game
+# Word Master Guess Game
 
 ## Introduction
 
