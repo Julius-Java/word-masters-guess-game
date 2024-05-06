@@ -1,12 +1,17 @@
 # Word Master Guess Game
 
+<div style="background-color: #ffffcc; padding: 10px; border: 1px solid yellow; margin-bottom: 10px;">
+  <img src="https://raw.githubusercontent.com/icons8/flat-color-icons/master/png/0000/512/warning-512.png" alt="Caution Icon" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">
+  <strong>Note:</strong> This game is currently only playable on desktop as it listens to keydown events. A future iteration of the game will include a mobile playable version.
+</div>
+
 ## Introduction
 
 Welcome to the Word Master Guess Game! This is a fun and challenging game where you try to guess the word of the day. You have 6 guesses per day, so use them wisely!
 
 ## How to Play
 
-1. **Start the game**: Click the link to view the game
+1. **Start the game**: Click the link to view the game [Vercel Deployment](https://word-masters-guess-game.vercel.app/)
 2. **Guess the word**: You will be prompted to guess the word of the day. Enter your guess and press Enter.
 3. **Valid guess**: You guess must be a valid 5 letter word, else you can't proceed
 3. **Number of guesses**: You have 6 guesses per day. Each incorrect guess will decrease your remaining guesses by one.
