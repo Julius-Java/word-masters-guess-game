@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const {log} = console
 
-function isLetter(letter) {
+function isLetter(letter: string) {
     return /^[a-zA-Z]$/.test(letter);
 }
 
@@ -13,14 +13,14 @@ const BASE_URL = process.env.BASE_API_URL
 
 async function getWordOfTheDay() {
     const response = await fetch("https://words.dev-apis.com/word-of-the-day")
-    const processedResponse = await response.json()
+    const processedResponse: any = await response.json()
     setLoading(false)
     // log(processedResponse)
     return {word: processedResponse.word, wordParts: processedResponse.word.split("")}
     // return {word: "ivory", wordParts: "ivory".split("")}
 }
 
-async function verifyWord(word) {
+async function verifyWord(word: string) {
     try {
         const response = await fetch(`${BASE_URL}/validate-word`, {
             method: "POST",
@@ -28,16 +28,15 @@ async function verifyWord(word) {
             body: JSON.stringify({word})
         })
 
-        const processedResponse = await response.json()
+        const processedResponse: any = await response.json()
         if (processedResponse.validWord) {
             return true
         } else if (!processedResponse.validWord) {
             return false
         }
 
-    } catch(error) {
-        alert("Oops, something went wrong!")
-        return
+    } catch(error: any) {
+        alert("Oops! something went wrong.")
     }
 }
 
@@ -48,7 +47,7 @@ let defaults = {
 origin: { y: 0.7 }
 };
 
-function fire(particleRatio, opts) {
+function fire(particleRatio: number, opts: any) {
     confetti({
         ...defaults,
         ...opts,
@@ -85,18 +84,18 @@ function playConfetti() {
     });
 }
 
-function setLoading(isLoading) {
-    loadingDiv.classList.toggle("show", isLoading)
+function setLoading(isLoading: boolean) {
+    loadingDiv?.classList.toggle("show", isLoading)
 }
 
-async function validate(guessWord) {
+async function validate(guessWord: string) {
     const isWordValid = await verifyWord(guessWord)
     return isWordValid
 }
 
 // Map letter counts
-function makeMap(array) {
-    const obj = {}
+function makeMap(array: []) {
+    const obj: any = {}
     for (let i = 0; i < array.length; i++) {
         const letter = array[i]
         if (obj[letter]) {
@@ -109,14 +108,14 @@ function makeMap(array) {
 }
 
 const cells = document.querySelectorAll(".cell")
-const loadingDiv = document.querySelector(".info-bar")
-const toastWrapper = document.querySelector(".toast-wrapper")
-const toastContainer = document.querySelector(".toast-container")
-const toastDismissal = document.querySelector(".close-toast")
-const toastContent = document.querySelector(".toast-content")
-const footerBanner = document.querySelector(".footer-banner")
-const winAnnouncement = document.querySelector(".win-announcement")
-const lossAnnouncement = document.querySelector(".loss-announcement")
+const loadingDiv = document.querySelector(".info-bar") as HTMLElement
+const toastWrapper = document.querySelector(".toast-wrapper") as HTMLElement
+const toastContainer = document.querySelector(".toast-container") as HTMLElement
+const toastDismissal = document.querySelector(".close-toast") as HTMLElement
+const toastContent = document.querySelector(".toast-content") as HTMLElement
+const footerBanner = document.querySelector(".footer-banner") as HTMLElement
+const winAnnouncement = document.querySelector(".win-announcement") as HTMLElement
+const lossAnnouncement = document.querySelector(".loss-announcement") as HTMLElement
 const ROUNDS = 6
 const ANSWER_LENGTH = 5
 // const TOAST_DISPLAY_TIME = 1500
@@ -129,7 +128,6 @@ async function init() {
     let done = false
 
     // console.log(confetti)
-
 
     function animateToast(displayTime = 1500) {
         animate({
@@ -179,7 +177,7 @@ async function init() {
     const {word, wordParts} = await getWordOfTheDay()
     isLoading = false
 
-    function addLetter(letter) {
+    function addLetter(letter: string) {
         if (currentGuess.length < ANSWER_LENGTH) {
             // append letter to the end
             currentGuess += letter
@@ -207,7 +205,7 @@ async function init() {
         // TODO validate word
         isLoading = true
         setLoading(true)
-        const validWord = await validate(currentGuess, isLoading)
+        const validWord = await validate(currentGuess)
         isLoading = false
         setLoading(false)
 
@@ -253,7 +251,7 @@ async function init() {
         // If guess is the same as word - user wins
         if (currentGuess === word) {
             // User wins
-            document.querySelector(".heading-title").classList.add("winner")
+            document.querySelector(".heading-title")?.classList.add("winner")
             toastContent.innerHTML = "🎉 You win 🎉 great guess!"
             toastContainer.classList.add("success-toast")
             playConfetti()
@@ -294,6 +292,13 @@ async function init() {
             }, 1000)
         }
     }
+
+    // Activate keyboard on mobile device
+    const isMobileDevice = /Mobi/.test(navigator.userAgent);
+    if (isMobileDevice) {
+        document.getElementById("body")?.focus
+    }
+
 
     document.addEventListener("keydown", (event) => {
         if (isLoading || done) {
