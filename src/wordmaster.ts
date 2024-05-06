@@ -1,7 +1,8 @@
 // const popMotion = require("popmotion")
-import {animate} from "popmotion"
+// import {animate} from "popmotion"
 import confetti from 'canvas-confetti';
 require("dotenv").config();
+import {gsap} from 'gsap';
 
 const {log} = console
 
@@ -130,30 +131,51 @@ async function init() {
     // console.log(confetti)
 
     function animateToast(displayTime = 1500) {
-        animate({
-            from: "0rem",
-            to: "5rem",
-            type: "spring",
-            onUpdate(update) {
-                toastWrapper.style.top = update
-                toastWrapper.style.display = "block"
+        // animate({
+        //     from: "0rem",
+        //     to: "5rem",
+        //     type: "spring",
+        //     onUpdate(update) {
+        //         toastWrapper.style.top = update
+        //         toastWrapper.style.display = "block"
+        //     },
+        //     onComplete() {
+        //         setTimeout(() => {
+        //             animate({
+        //                 from: "5rem",
+        //                 to: "-10rem",
+        //                 type: "spring",
+        //                 onUpdate(update) {
+        //                     toastWrapper.style.top = update
+        //                 },
+        //                 onComplete() {
+        //                     toastWrapper.style.display = "none"
+        //                 }
+        //             })
+        //         }, displayTime)
+        //     }
+        // })
+
+        gsap.to(toastWrapper, {
+            top: "5rem",
+            duration: 1,
+            ease: "spring",
+            onStart: function() {
+                toastWrapper.style.display = "block";
             },
             onComplete() {
-                setTimeout(() => {
-                    animate({
-                        from: "5rem",
-                        to: "-10rem",
-                        type: "spring",
-                        onUpdate(update) {
-                            toastWrapper.style.top = update
-                        },
-                        onComplete() {
-                            toastWrapper.style.display = "none"
-                        }
-                    })
-                }, displayTime)
+                setTimeout(function() {
+                    gsap.to(toastWrapper, {
+                    top: "-10rem",
+                    duration: 1,
+                    ease: "spring",
+                    onComplete: function() {
+                        toastWrapper.style.display = "none";
+                    }
+                    });
+                }, displayTime);
             }
-        })
+        });
 
     }
 
@@ -161,17 +183,29 @@ async function init() {
 
 
     toastDismissal.addEventListener("click", () => {
-        animate({
-            from: "5rem",
-            to: "-10rem",
-            type: "spring",
-            onUpdate(update) {
-                toastWrapper.style.top = update
+        // animate({
+        //     from: "5rem",
+        //     to: "-10rem",
+        //     type: "spring",
+        //     onUpdate(update) {
+        //         toastWrapper.style.top = update
+        //     },
+        //     onComplete() {
+        //         toastWrapper.style.display = "none"
+        //     }
+        // })
+
+        gsap.to(toastWrapper, {
+            top: "-10rem",
+            duration: 1,
+            ease: "spring",
+            onStart: function() {
+                toastWrapper.style.display = "block";
             },
             onComplete() {
                 toastWrapper.style.display = "none"
             }
-        })
+        });
     })
 
     const {word, wordParts} = await getWordOfTheDay()

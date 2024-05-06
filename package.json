@@ -2,7 +2,7 @@
   "dependencies": {
     "canvas-confetti": "^1.9.3",
     "dotenv": "^16.4.5",
-    "popmotion": "^11.0.5"
+    "gsap": "^3.12.5"
   },
   "name": "word-master-guess-game",
   "source": "src/index.html",
