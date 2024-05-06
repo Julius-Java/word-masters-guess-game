@@ -128,20 +128,24 @@ async function init() {
     let isLoading = true
     let done = false
 
-        // Function to check if the device is mobile
-        function isMobile() {
-            return /Mobi|Android/i.test(navigator.userAgent);
-        }
+    // Function to activate the keyboard on mobile when the user interacts with the page
+    function activateKeyboardOnMobile() {
+        // Create a hidden input field
+        const inputElement = document.createElement('input');
+        inputElement.setAttribute('type', 'text');
+        inputElement.style.position = 'absolute';
+        inputElement.style.opacity = '0';
+        inputElement.style.width = '1px';
+        inputElement.style.height = '1px';
+        inputElement.style.pointerEvents = 'none'; // Make it not clickable
+        document.body.appendChild(inputElement);
+        inputElement.focus(); // Focus on the input field to activate the keyboard
+    }
 
-        // Focus on an input field or contenteditable div if the device is mobile
-        if (isMobile()) {
-            const inputElement = document.createElement('input');
-            inputElement.setAttribute('type', 'text');
-            inputElement.style.position = 'absolute';
-            inputElement.style.opacity = '0';
-            document.body.appendChild(inputElement);
-            inputElement.focus();
-        }
+    // Activate the keyboard on mobile when the user interacts with the page
+    document.addEventListener('click', () => {
+        activateKeyboardOnMobile();
+    }, { once: true }); // Listen for the click event only once
 
 
     // console.log(confetti)
