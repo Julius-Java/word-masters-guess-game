@@ -128,34 +128,16 @@ async function init() {
     let isLoading = true
     let done = false
 
+
+    // Activate keyboard on mobile device
+    const isMobileDevice = /Mobi/.test(navigator.userAgent);
+    if (isMobileDevice) {
+        document.getElementById("body")?.focus()
+    }
+
     // console.log(confetti)
 
     function animateToast(displayTime = 1500) {
-        // animate({
-        //     from: "0rem",
-        //     to: "5rem",
-        //     type: "spring",
-        //     onUpdate(update) {
-        //         toastWrapper.style.top = update
-        //         toastWrapper.style.display = "block"
-        //     },
-        //     onComplete() {
-        //         setTimeout(() => {
-        //             animate({
-        //                 from: "5rem",
-        //                 to: "-10rem",
-        //                 type: "spring",
-        //                 onUpdate(update) {
-        //                     toastWrapper.style.top = update
-        //                 },
-        //                 onComplete() {
-        //                     toastWrapper.style.display = "none"
-        //                 }
-        //             })
-        //         }, displayTime)
-        //     }
-        // })
-
         gsap.to(toastWrapper, {
             top: "5rem",
             duration: 1,
@@ -183,18 +165,6 @@ async function init() {
 
 
     toastDismissal.addEventListener("click", () => {
-        // animate({
-        //     from: "5rem",
-        //     to: "-10rem",
-        //     type: "spring",
-        //     onUpdate(update) {
-        //         toastWrapper.style.top = update
-        //     },
-        //     onComplete() {
-        //         toastWrapper.style.display = "none"
-        //     }
-        // })
-
         gsap.to(toastWrapper, {
             top: "-10rem",
             duration: 1,
@@ -299,13 +269,6 @@ async function init() {
             done = true
             return;
         }  else if (currentRow === ROUNDS) {
-            // if round of guesses is complete, then we're done
-            // toastContent.innerHTML = "I guess you're not a good guesser. Anyways the word was " + word
-            // toastContainer.classList.add("info-toast")
-            // animateToast(4000)
-            // setTimeout(() => {
-            //     toastContainer.classList.remove("info-toast")
-            // }, 6000)
             footerBanner.style.display = "block"
             winAnnouncement.style.display = "none"
             lossAnnouncement.innerHTML = lossAnnouncement.innerHTML + " " + "🎉  " + word.toUpperCase() + "  🎉"
@@ -325,12 +288,6 @@ async function init() {
                 cells[ANSWER_LENGTH * currentRow + i].classList.remove("invalid")
             }, 1000)
         }
-    }
-
-    // Activate keyboard on mobile device
-    const isMobileDevice = /Mobi/.test(navigator.userAgent);
-    if (isMobileDevice) {
-        document.getElementById("body")?.focus
     }
 
 
