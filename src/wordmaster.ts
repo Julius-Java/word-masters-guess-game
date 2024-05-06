@@ -128,12 +128,21 @@ async function init() {
     let isLoading = true
     let done = false
 
+        // Function to check if the device is mobile
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
 
-    // Activate keyboard on mobile device
-    const isMobileDevice = /Mobi/.test(navigator.userAgent);
-    if (isMobileDevice) {
-        document.getElementById("body")?.focus()
-    }
+        // Focus on an input field or contenteditable div if the device is mobile
+        if (isMobile()) {
+            const inputElement = document.createElement('input');
+            inputElement.setAttribute('type', 'text');
+            inputElement.style.position = 'absolute';
+            inputElement.style.opacity = '0';
+            document.body.appendChild(inputElement);
+            inputElement.focus();
+        }
+
 
     // console.log(confetti)
 
